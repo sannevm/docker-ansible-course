@@ -7,7 +7,7 @@ router = DefaultRouter(trailing_slash=False)
 router.register(r'todos', views.TodoItemViewSet)
 
 # The API URLs are now determined automatically by the router
-urlpatters = [
+urlpatterns = [
         url(r'^', include(router.urls)),
 
 ]
