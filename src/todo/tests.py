@@ -17,7 +17,7 @@ class TestCreateTodoItem(APITestCase):
         self.assertEqual(self.response.status_code, status.HTTP_201_CREATED)
 
     def test_received_location_header_hyperlink(self):
-        self.assertRegexpMatches(self.repsonse['location'], '^http://.+/todos/[\d]+$')
+        self.assertRegexpMatches(self.response['Location'], '^http://.+/todos/[\d]+$')
 
     def test_item_was_created(self):
         self.assertEqual(TodoItem.objects.count(), 1)
@@ -46,7 +46,7 @@ class TestDeleteTodoItem(APITestCase):
         url = response['Location']
         self.response = self.client.delete(url)
 
-    def test_received_204_no_content_status_code(Self):
+    def test_received_204_no_content_status_code(self):
         self.assertEqual(self.response.status_code, status.HTTP_204_NO_CONTENT)
 
     def test_the_item_was_deleted(self):
